@@ -14,9 +14,15 @@ function loadFile(url, callback) {
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
+  data = {
+    title: 'Stefan',
+    subtitle: 'Leve',
+    description: 'Partner with a P',
+  };
+
   generate() {
     loadFile(
-      'https://storage.googleapis.com/md-vnv-template/vnv-template.docx', 
+      'https://storage.googleapis.com/md-vnv-template/vnv-template-test.docx',
       function (error, content) {
         console.log('ERROR : ', error, content);
         if (error) {
@@ -27,11 +33,7 @@ export class ProductListComponent {
           paragraphLoop: true,
           linebreaks: true,
         });
-        doc.setData({
-          title: 'Stefan',
-          subtitle: 'Leve',
-          description: 'Partner with a P',
-        });
+        doc.setData(this.data);
         try {
           // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
           doc.render();
