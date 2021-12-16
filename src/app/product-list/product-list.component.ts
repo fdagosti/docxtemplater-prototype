@@ -16,8 +16,9 @@ function loadFile(url, callback) {
 export class ProductListComponent {
   generate() {
     loadFile(
-      'https://docxtemplater.com/tag-example.docx',
+      'https://storage.googleapis.com/md-vnv-template/vnv-template.docx', 
       function (error, content) {
+        console.log('ERROR : ', error, content);
         if (error) {
           throw error;
         }
@@ -27,9 +28,8 @@ export class ProductListComponent {
           linebreaks: true,
         });
         doc.setData({
-          first_name: 'Stefan',
-          last_name: 'Leve',
-          phone: '0652455478',
+          title: 'Stefan',
+          subtitle: 'Leve',
           description: 'Partner with a P',
         });
         try {
